@@ -124,6 +124,7 @@ Ip Address
 ####Contem "From na primeira Linha e pula (\n+) procurando sebraego"
 ((.*From.*[\n+].*)sebraego\.com\.br.*)
 
+*****************************************************************
 CPF
 ([0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2})
 
