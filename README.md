@@ -1,8 +1,8 @@
 # Regex Tips
-## Expressão regular - SED - Regex
+## Expressão regular - SED - Regex.
 - http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
-## Alterar exteção
+## Alterar exteção.
 find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
 
 *****************************************************************
@@ -11,7 +11,7 @@ echo $(( $RANDOM % 100))
 http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
 
 *****************************************************************
-## Procurar uma linha espefiica
+## Procurar uma linha espefiica.
 cat lista.txt | sed -n 3p
 
 *****************************************************************
