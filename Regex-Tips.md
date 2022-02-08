@@ -1,5 +1,5 @@
 # Regex Tips
-## Expressão regular - SED - Regex.
+## Expressão regular - SED - Regex
 - http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
 ## Alterar exteção.
