@@ -1,6 +1,6 @@
 # Regex
 # Expressão regular - SED - Regex
-> http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
+- http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
 # Alterar exteção
 > find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
@@ -9,41 +9,46 @@
 # Gerar numeros aleatórios.
 
 > echo $(( $RANDOM % 100))
-> http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
+- http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
 
 *****************************************************************
 # Procurar uma linha espefiica
 
 > cat lista.txt | sed -n 3p
+
 *****************************************************************
-Regex IPv4
+# Regex IPv4
 ([0-9]{1,3}(\.[0-9]{1,3}){3})
-Regex IPv6
+# Regex IPv6
 ([a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})
+
 *****************************************************************
 
 src\=([0-9]{1,3}(\.[0-9]{1,3}){3})|(https?\:\/\/(\w.*?)\s)|dst\=([0-9]{1,3}(\.[0-9]{1,3}){3})|suser\=(\w.*)\ssrc
 
-<30>Apr  3 21:54:30 srvwebprx mwg: CEF:0|McAfee|Web Gateway|7.7.2.6.0|403|Proxy-Block URLs Whose Category Is in Category BlockList|2|rt=Apr 03 2018 21:54:30 cat=Access Log dst=172.217.28.142 dhost=hangouts.google.com suser=samuel.nascimento src=10.200.200.126 requestMethod=CONNECT request=https://hangouts.google.com app=HTTP cs3=HTTP/1.1 cs3Label=Protocol/Version cs4=Instant Messaging, Web Phone cs4Label=URL Categories cs6=Minimal Risk cs6Label=Reputation fileType= out=3219 requestClientApplication=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 cs1= cs1Label=Virus Name cn1=10 cn1Label=Block Reason cs5=Default cs5Label=Policy
+<30>Apr  3 21:54:30 srvwebprx mwg: CEF:0|McAfee|Web Gateway|7.7.2.6.0|403|Proxy-Block URLs Whose Category Is in Category BlockList|2|rt=Apr 03 2018 21:54:30 cat=Access Log dst=172.217.28.142 dhost=hangouts.google.com suser=user001 src=10.210.210.210 requestMethod=CONNECT request=https://hangouts.google.com app=HTTP cs3=HTTP/1.1 cs3Label=Protocol/Version cs4=Instant Messaging, Web Phone cs4Label=URL Categories cs6=Minimal Risk cs6Label=Reputation fileType= out=3219 requestClientApplication=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 cs1= cs1Label=Virus Name cn1=10 cn1Label=Block Reason cs5=Default cs5Label=Policy
 
 *****************************************************************
-ALTERAR CHAVE .PPK (PUTTY) PARA FORMATO LINUX 
+# ALTERAR CHAVE .PPK (PUTTY) PARA FORMATO LINUX 
 
-for X in *.ppk; do puttygen $X -L > ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pub; puttygen $X -O private-openssh -o ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pvk; done;
+> for X in *.ppk; do puttygen $X -L > ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pub; puttygen $X -O private-openssh -o ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pvk; done;
 
 *****************************************************************
-* Adicionar /32 no final da linha
-sed 's/$/\/32/'
-* Resolver meu problema.
-sed 's/^/set address office365-/' | sed 's/\./-/g' | sed 's/$/\--32/'
-* Apagar linha com determinado string "/" (no meu caso)
-sed '/\//d'
+# Adicionar /32 no final da linha
+> sed 's/$/\/32/'
+
+# Resolver meu problema.
+> sed 's/^/set address office365-/' | sed 's/\./-/g' | sed 's/$/\--32/'
+
+# Apagar linha com determinado string "/"
+> sed '/\//d'
 ex.:
 192.178.10.20/23
 
 sed 's:\/:--:g' FILE.txt | sed 's:\.:-:g'
+
 *****************************************************************
-* remover linha vazia
+# Remover linha vazia
 ***sed
 
 '/^\[\[:space:\]\]*$/d'
@@ -64,11 +69,12 @@ sed 's:\/:--:g' FILE.txt | sed 's:\.:-:g'
 '/^[ \t]*$/ {next;} {print}'
 '!/^\[ \t\]*$/'
 *****************************************************************
-Procurar apenas usuários que contem .
-Ex: "carlos.jose"
-sed -n '/\./p' usuario | uniq
+# Procurar apenas usuários que contem .
+> Ex: "carlos.jose"
+> sed -n '/\./p' usuario | uniq
 
 *****************************************************************
+
 :%s/,/\r/g
 
 substituir (,) para próxima linha.
@@ -91,27 +97,28 @@ teste3
 .
 .
 .
-parar
+para
 teste1,teste2,teste3 ...
 
 *****************************************************************
-Inserir comentário ou alguma coisa em um range de linhas no Vim
+# Inserir comentário ou alguma coisa em um range de linhas no Vim
 :linha inicial,linha finals/^/#
 Exemplo:
 
 :4,10s/^/alguma coisa
 
 *****************************************************************
-Regex -- 01 -- Novo
+# Regex -- 01 -- Novo
 
-Files chi
-[^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*.exe
+# Files chi
+> [^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*.exe
+
 *****************************************************************
-URL Validation
-[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
+# URL Validation
+> [(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
 
-Ip Address
-\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b
+# Ip Address
+> \b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b
 
 *****************************************************************
 ###Timespan
@@ -128,52 +135,47 @@ Ip Address
 ((.*From.*[\n+].*)sebraego\.com\.br.*)
 
 *****************************************************************
-CPF
+# CPF
 ([0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2})
 
-###Faz match em palavras que contem o caracter $
-(\w+.?[\$]) ou (\w+[\$])
-
-\w+[\$]|((SRV)\w+)|((srv)\w+)
-SRVLAV$ ou $SRVLAB ou SRVLAB ou srvLaB
-
-(\w+[$]|[$]+\w+)
+# Faz match em palavras que contem o caracter $
+> (\w+.?[\$]) ou (\w+[\$])
+> \w+[\$]|((SRV)\w+)|((srv)\w+)
+> SRVLAV$ ou $SRVLAB ou SRVLAB ou srvLaB
+> (\w+[$]|[$]+\w+)
 
 *****************************************************************
 
-#Match todos dominios abaixo
-.*\.(ly|cn|kp|ira|fy|af|ss|cu|iq|il|ye|ir|ru).*
+# Match todos dominios abaixo
+> .*\.(ly|cn|kp|ira|fy|af|ss|cu|iq|il|ye|ir|ru).*
 
-#Match todo final de URL https/http
-version-1
-(.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js|\.cmd|\.src$))
+# Match todo final de URL https/http
+- version-1
+> (.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js|\.cmd|\.src$))
 
-#Match todos que começam ou que contem
-(.*www-data@.*)|(.*@localhost.*)
+# Match todos que começam ou que contem
+> (.*www-data@.*)|(.*@localhost.*)
 
-#Match todos que começam com letras e numeros inclusive no codigo fonte.
-(.*[\d]@.*)
+# Match todos que começam com letras e numeros inclusive no codigo fonte.
+> (.*[\d]@.*)
 
-#Match todos que terminal com clique aqui ou clique
-(.*tps?:\/\/)(.*[Cc]lique?.*aqui|.*[Cc]lique$)
+# Match todos que terminal com clique aqui ou clique
+> (.*tps?:\/\/)(.*[Cc]lique?.*aqui|.*[Cc]lique$)
 
-(.*tps?:\/\/.*(\.php|\.sh|\.cmd|\.exe|\.bat|\.vbs|\.jar|\.js|\.src|\.aspx).*)
-(.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js$))
+> (.*tps?:\/\/.*(\.php|\.sh|\.cmd|\.exe|\.bat|\.vbs|\.jar|\.js|\.src|\.aspx).*)
+> (.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js$))
 
-#Tirar o traço ( ,) no final da frace e pular a linha. ex. xpto,dcdar,acdacd
-sed 's/,/\n/g'
+# Tirar o traço ( ,) no final da frace e pular a linha. ex. xpto,dcdar,acdacd
+> sed 's/,/\n/g'
 
-#Buscar um ou outro
-cat malware | grep -Ev "micros|google|sebrae|linke|skype|portaldoem|facebook|gov.br|icloud|footprintdns"
+# Buscar um ou outro
+> cat malware | grep -Ev "micros|google|sebrae|linke|skype|portaldoem|facebook|gov.br|icloud|footprintdns"
 
-*****************************************************************
-
-lynx --source https://ransomwaretracker.abuse.ch/ip/209.99.40.222/ | awk {'print $3}' | sed 's/href\=\"host\///' | sed 's/\/\"//'
+> lynx --source https://ransomwaretracker.abuse.ch/ip/209.99.40.222/ | awk {'print $3}' | sed 's/href\=\"host\///' | sed 's/\/\"//'
 
 *****************************************************************
-Get Details about some Malware IP
-
-curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report?apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222'
+# Get Details about some Malware IP
+> curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222'
 
 {"last_resolved": "2015-09-18 00:00:00", "hostname": "019582.yihedu.com"}
 
@@ -182,26 +184,27 @@ cat file1  | sed 's/,/\n/g' | grep url | awk '{print $2}' | sed 's/\"//' | sed '
 
 *****************************************************************
 
-Inserir "*" no inicio das linhas
-sed 's/^#*/*/' 
+# Inserir "*" no inicio das linhas
+> sed 's/^#*/*/' 
 
-Inserir "*" no final das linhas
-sed 's/$/*/'
+# Inserir "*" no final das linhas
+> sed 's/$/*/'
 
-Removendo linhas vazias com sed
-cat file.txt | sed '/^$/d'
+# Removendo linhas vazias com sed
+> cat file.txt | sed '/^$/d'
 
-Pegar informações de um IP no VirusTotal
-curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report?apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222' | sed 's/},/\n/g' | grep url | awk '{print $2}' | sed 's/\"//' | sed 's/http\:\/\///' | sed 's/\/.*//' | sort -u | sed 's/^#*/*/' | sed 's/$/*/'
+# Pegar informações de um IP no VirusTotal
+> curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report?apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222' | sed 's/},/\n/g' | grep url | awk '{print $2}' | sed 's/\"//' | sed 's/http\:\/\///' | sed 's/\/.*//' | sort -u | sed 's/^#*/*/' | sed 's/$/*/'
 
 *****************************************************************
 
 (^DWM|^DicomServer|^DefaultAppPool|^schedule.tasks|^AppVPublishing|^Symantec|^postgres|^Classic|^synapseae|^altaperformance|^.NET\s)|(\w+[$])
 
-Remover ^M do script ou arquivo
-sed -e "s/\r//g" file > newfile
+# Remover ^M do script ou arquivo
+> sed -e "s/\r//g" file > newfile
 ou
 dos2unix script
-How to convert a string from uppercase to lowercase
+
+# How to convert a string from uppercase to lowercase
 cat file.txt | tr '[:upper:]' '[:lower:]'
 *****************************************************************
