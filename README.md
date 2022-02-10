@@ -1,6 +1,4 @@
 # Regex Tips
-## Regular Expression - SED - Regex.
-- http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
 ## Change extension.
 ```
@@ -8,9 +6,9 @@ find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
 ```
 *****************************************************************
 ## Random number generator.
+```
 echo $(( $RANDOM % 100))
-- http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
-
+```
 *****************************************************************
 ## Find a specific line.
 cat lista.txt | sed -n 3p
@@ -245,3 +243,10 @@ cat file.txt | tr '[:upper:]' '[:lower:]'
 
 lynx --source https://ransomwaretracker.abuse.ch/ip/209.99.40.222/ | awk {'print $3}' | sed 's/href\=\"host\///' | sed 's/\/\"//'
 ```
+*****************************************************************
+
+# Links
+- https://regex101.com
+- https://www.regextester.com
+- http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
+- http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
