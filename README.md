@@ -1,17 +1,17 @@
 # Regex Tips
-## Expressão regular - SED - Regex.
+## Regular Expression - SED - Regex.
 - http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
-## Alterar exteção.
+## Change extension.
 find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
 
 *****************************************************************
-## Gerar numeros aleatórios.
+## Random number generator.
 echo $(( $RANDOM % 100))
 - http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
 
 *****************************************************************
-## Procurar uma linha espefiica.
+## Find a specific line.
 cat lista.txt | sed -n 3p
 
 *****************************************************************
@@ -22,22 +22,17 @@ cat lista.txt | sed -n 3p
 
 *****************************************************************
 
-src\=([0-9]{1,3}(\.[0-9]{1,3}){3})|(https?\:\/\/(\w.*?)\s)|dst\=([0-9]{1,3}(\.[0-9]{1,3}){3})|suser\=(\w.*)\ssrc
-
-<30>Apr  3 21:54:30 srvwebprx mwg: CEF:0|McAfee|Web Gateway|7.7.2.6.0|403|Proxy-Block URLs Whose Category Is in Category BlockList|2|rt=Apr 03 2018 21:54:30 cat=Access Log dst=172.217.28.142 dhost=hangouts.google.com suser=user001 src=10.210.210.210 requestMethod=CONNECT request=https://hangouts.google.com app=HTTP cs3=HTTP/1.1 cs3Label=Protocol/Version cs4=Instant Messaging, Web Phone cs4Label=URL Categories cs6=Minimal Risk cs6Label=Reputation fileType= out=3219 requestClientApplication=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 cs1= cs1Label=Virus Name cn1=10 cn1Label=Block Reason cs5=Default cs5Label=Policy
-
-*****************************************************************
-## ALTERAR CHAVE .PPK (PUTTY) PARA FORMATO LINUX 
+## Change key with extension .PPK (PUTTY) to Linux Format 
 for X in *.ppk; do puttygen $X -L > ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pub; puttygen $X -O private-openssh -o ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pvk; done;
 
 *****************************************************************
-## Adicionar /32 no final da linha
+## Add "/32" in the last line.
 sed 's/$/\/32/'
 
-## Resolver meu problema.
+## Add the "set address office365-" in front line and change "." to "-", finally with "--32".
 sed 's/^/set address office365-/' | sed 's/\./-/g' | sed 's/$/\--32/'
 
-## Apagar linha com determinado string "/"
+## Remove line with that have "/"
 sed '/\//d'
 ex.:
 192.178.10.20/23
@@ -45,46 +40,49 @@ ex.:
 sed 's:\/:--:g' FILE.txt | sed 's:\.:-:g'
 
 *****************************************************************
-## Remover linha vazia
-***sed
-
+## Remove empty line.
+### sed
+```
 '/^\[\[:space:\]\]*$/d'
 '/^\s*$/d'
 '/^$/d'
 -n '/^\s*$/!p'
-
-**grep
-
+```
+### grep
+```
 -v '^$'
 -v '^\s*$'
 -v '^\[\[:space:\]\]*$'
-***awk
-
+```
+### awk
+```
 /./
 'NF'
 'length'
 '/^[ \t]*$/ {next;} {print}'
 '!/^\[ \t\]*$/'
+```
 *****************************************************************
-## Procurar apenas usuários que contem .
+## Find out users that content name with "." in file.
 Ex: "carlos.jose"
 sed -n '/\./p' usuario | uniq
 
 *****************************************************************
-
+## Change from line to column, or from column to line.
 :%s/,/\r/g
 
-substituir (,) para próxima linha.
+change (,) to next line.
+
 Exemplo.
 teste1,teste2,teste3,teste4,teste5
-para:
+to:
 teste1
 teste2
 teste3
 teste4
 teste5
 
-ao contrário.
+the other way around.
 
 :%s/\n/\,/g
 
@@ -94,7 +92,7 @@ teste3
 .
 .
 .
-para
+to
 teste1,teste2,teste3 ...
 
 *****************************************************************
