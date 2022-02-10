@@ -105,7 +105,12 @@ Sample:
 :4,10s/^/something
 
 ```
-![image](https://user-images.githubusercontent.com/80328830/153414533-c0e877a3-b558-4077-b6f2-db42b86319ef.png)
+![image](https://user-images.githubusercontent.com/80328830/153415421-e6e1fce3-14d5-45b6-b4ed-1e661a314e89.png)
+
+### to
+
+![image](https://user-images.githubusercontent.com/80328830/153415657-79e8bf2a-35ad-4675-8ff3-d93dfd1884c0.png)
+
 
 *****************************************************************
 ## Files chi
