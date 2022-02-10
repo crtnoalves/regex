@@ -69,6 +69,7 @@ sed -n '/\./p' usuario | uniq
 
 *****************************************************************
 ## Change from line to column, or from column to line.
+```
 :%s/,/\r/g
 
 change (,) to next line.
@@ -94,14 +95,18 @@ teste3
 .
 to
 teste1,teste2,teste3 ...
-
+```
 *****************************************************************
-## Inserir comentário ou alguma coisa em um range de linhas no Vim
-:linha inicial,linha finals/^/#
-Exemplo:
+## Add "#" or something in some line range on Vim editor.
+```
+:start line,last line/^/#
+Sample:
 
-:4,10s/^/alguma coisa
+:4,10s/^/something
 
+![image](https://user-images.githubusercontent.com/80328830/153414533-c0e877a3-b558-4077-b6f2-db42b86319ef.png)
+
+```
 *****************************************************************
 ## Files chi
 [^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*.exe
