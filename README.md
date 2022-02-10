@@ -3,8 +3,9 @@
 - http://sed.sourceforge.net/grabbag/tutorials/do_it_with_sed.txt
 
 ## Change extension.
+```
 find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
-
+```
 *****************************************************************
 ## Random number generator.
 echo $(( $RANDOM % 100))
@@ -16,29 +17,36 @@ cat lista.txt | sed -n 3p
 
 *****************************************************************
 ## Regex IPv4
+```
 ([0-9]{1,3}(\.[0-9]{1,3}){3})
+```
 ## Regex IPv6
+```
 ([a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})
-
+```
 *****************************************************************
 
 ## Change key with extension .PPK (PUTTY) to Linux Format 
+```
 for X in *.ppk; do puttygen $X -L > ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pub; puttygen $X -O private-openssh -o ~/.ssh/$(echo $X | sed 's,./,,' | sed 's/.ppk//g').pvk; done;
-
+```
 *****************************************************************
 ## Add "/32" in the last line.
+```
 sed 's/$/\/32/'
-
+```
 ## Add the "set address office365-" in front line and change "." to "-", finally with "--32".
+```
 sed 's/^/set address office365-/' | sed 's/\./-/g' | sed 's/$/\--32/'
-
+```
 ## Remove line with that have "/"
+```
 sed '/\//d'
 ex.:
 192.178.10.20/23
 
 sed 's:\/:--:g' FILE.txt | sed 's:\.:-:g'
-
+```
 *****************************************************************
 ## Remove empty line.
 ### sed
@@ -64,9 +72,10 @@ sed 's:\/:--:g' FILE.txt | sed 's:\.:-:g'
 ```
 *****************************************************************
 ## Find out users that content name with "." in file.
+```
 Ex: "carlos.jose"
 sed -n '/\./p' usuario | uniq
-
+```
 *****************************************************************
 ## Change from line to column, or from column to line.
 ```
@@ -74,7 +83,7 @@ sed -n '/\./p' usuario | uniq
 
 change (,) to next line.
 
-Exemplo.
+sample.
 teste1,teste2,teste3,teste4,teste5
 to:
 teste1
@@ -114,97 +123,125 @@ Sample:
 
 *****************************************************************
 ## Files chi
+```
 [^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*.exe
-
+```
 *****************************************************************
 ## URL Validation
+```
 [(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
-
+```
 ## Ip Address
+```
 \b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b
-
+```
 *****************************************************************
-## Timespan
+## Timestamp
+```
 ^((([0-1]?[0-9])|([2][0-3])):)?(([0-5][0-9]):)?([0-5][0-9])(\.\d{1,3})?$|^\d+(\.\d{1,3})?$
-
-## Extenções
+```
+## Extensions (used in AntiSpam Symantec)
+```
 (\.\+w|.js|.exe|.doc|.txt|.rar|.tar|.pdf|.img|.xlsx$)
-
-## URL que contem
+```
+### Content in URL
+```
 (.ttp[s]?\:.*(.php|.zip|.bat|.exe|.src|.run\$))
 ([^Received:]\s+(.*from\s).*)(\.sebraego.com.br)
-
-## Contem "From na primeira Linha e pula (\n+) procurando sebraego"
-((.*From.*[\n+].*)sebraego\.com\.br.*)
-
-*****************************************************************
-## CPF
-([0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2})
-
-## Faz match em palavras que contem o caracter $
-(\w+.?[\$]) ou (\w+[\$])
-\w+[\$]|((SRV)\w+)|((srv)\w+)
-SRVLAV$ ou $SRVLAB ou SRVLAB ou srvLaB
-(\w+[$]|[$]+\w+)
-
-*****************************************************************
-
-## Match todos dominios abaixo
+```
+### Content "From in first line and jump (\n+) searching for google.com"
+```
+((.*From.*[\n+].*)google\.com.*)
+```
+### Match all domain below
+```
 .*\.(ly|cn|kp|ira|fy|af|ss|cu|iq|il|ye|ir|ru).*
-
-## Match todo final de URL https/http
+```
+### Match the last URL content https/http
+```
 (.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js|\.cmd|\.src$))
-
-## Match todos que começam ou que contem
-(.*www-data@.*)|(.*@localhost.*)
-
-## Match todos que começam com letras e numeros inclusive no codigo fonte.
-(.*[\d]@.*)
-
-## Match todos que terminal com clique aqui ou clique
-(.*tps?:\/\/)(.*[Cc]lique?.*aqui|.*[Cc]lique$)
 (.*tps?:\/\/.*(\.php|\.sh|\.cmd|\.exe|\.bat|\.vbs|\.jar|\.js|\.src|\.aspx).*)
 (.*tps?:\/\/.*(\.exe|\.vbs|\.php|\.sh|\.jar|\.zip|\.bat|\.js$))
+```
+### Match all content below
+```
+(.*www-data@.*)|(.*@localhost.*)
+```
+### Match all words and number including code font.
+```
+(.*[\d]@.*)
+```
+### Match all phrases that content "clique" or "clique aqui"
+```
+(.*tps?:\/\/)(.*[Cc]lique?.*aqui|.*[Cc]lique$)
+```
+*****************************************************************
+## CPF
+```
+([0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2})
+```
+## Match in words that content "$"
+```
+(\w+.?[\$]) ou (\w+[\$])
+\w+[\$]|((SRV)\w+)|((srv)\w+)
+SRVLAV$ or $SRVLAB or SRVLAB or srvLaB
+(\w+[$]|[$]+\w+)
+```
+*****************************************************************
 
-## Tirar o traço ( ,) no final da frace e pular a linha. ex. xpto,dcdar,acdacd
+## Remove "," and jump to next line
+```
 sed 's/,/\n/g'
-
-## Buscar um ou outro
+```
+## Find out string or anything using "|" with grep command
+```
 cat malware | grep -Ev "micros|google|sebrae|linke|skype|portaldoem|facebook|gov.br|icloud|footprintdns"
-lynx --source https://ransomwaretracker.abuse.ch/ip/209.99.40.222/ | awk {'print $3}' | sed 's/href\=\"host\///' | sed 's/\/\"//'
 
+```
 *****************************************************************
 ## Get Details about some Malware IP
+```
 curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222'
 
 {"last_resolved": "2015-09-18 00:00:00", "hostname": "019582.yihedu.com"}
 
 cat file1  | sed 's/,/\n/g' | grep hostname | awk '{print $2}' | sed 's/\"}//' | sed 's/\"//'
 cat file1  | sed 's/,/\n/g' | grep url | awk '{print $2}' | sed 's/\"//' | sed 's/http\:\/\///' | sed 's/\/.*//' | sort -u
-
+```
 *****************************************************************
 
-## Inserir "*" no inicio das linhas
+## add "*" in the start line
+```
 sed 's/^#*/*/' 
-
-## Inserir "*" no final das linhas
+```
+## add "*" in the last line
+```
 sed 's/$/*/'
-
-## Removendo linhas vazias com sed
+```
+## Remove the empty line with SED
+```
 cat file.txt | sed '/^$/d'
-
-## Pegar informações de um IP no VirusTotal
+```
+## Get IP information using the VirusTotal API command
+```
 curl --request GET --url 'https://www.virustotal.com/vtapi/v2/ip-address/report?apikey=1e73f5e9573b8a85a9f4118b39071a9d3f89849ab98f935bc611e5b457bf8e9f&ip=209.99.40.222' | sed 's/},/\n/g' | grep url | awk '{print $2}' | sed 's/\"//' | sed 's/http\:\/\///' | sed 's/\/.*//' | sort -u | sed 's/^#*/*/' | sed 's/$/*/'
-
+```
 *****************************************************************
 
-(^DWM|^DicomServer|^DefaultAppPool|^schedule.tasks|^AppVPublishing|^Symantec|^postgres|^Classic|^synapseae|^altaperformance|^.NET\s)|(\w+[$])
-
-## Remover ^M do script ou arquivo
+## Remove "^M"
+```
 sed -e "s/\r//g" file > newfile
 ou
 dos2unix script
-
+```
 ## How to convert a string from uppercase to lowercase
+```
 cat file.txt | tr '[:upper:]' '[:lower:]'
+```
 *****************************************************************
+# Anything
+```
+(^DWM|^DicomServer|^DefaultAppPool|^schedule.tasks|^AppVPublishing|^Symantec|^postgres|^Classic|^synapseae|^altaperformance|^.NET\s)|(\w+[$])
+
+lynx --source https://ransomwaretracker.abuse.ch/ip/209.99.40.222/ | awk {'print $3}' | sed 's/href\=\"host\///' | sed 's/\/\"//'
+```
