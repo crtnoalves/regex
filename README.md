@@ -104,9 +104,9 @@ Sample:
 
 :4,10s/^/something
 
+```
 ![image](https://user-images.githubusercontent.com/80328830/153414533-c0e877a3-b558-4077-b6f2-db42b86319ef.png)
 
-```
 *****************************************************************
 ## Files chi
 [^\x00-\x7F]+\ *(?:[^\x00-\x7F]| )*.exe
