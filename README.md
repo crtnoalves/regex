@@ -8,6 +8,7 @@ find . -name '*.txt' | sed 's/.*/mv & &/' | sed 's/\.txt$/.tec/'
 *****************************************************************
 ## Gerar numeros aleatórios.
 echo $(( $RANDOM % 100))
+
 http://aurelio.net/blog/2013/05/10/video-aula-sorteio-no-facebook-usando-shell-script/
 
 *****************************************************************
